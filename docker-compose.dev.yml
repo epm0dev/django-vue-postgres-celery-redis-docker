@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   api:
+    container_name: api
     build: ./backend
     restart: on-failure
     volumes:
@@ -15,6 +16,7 @@ services:
       - db
 
   db:
+    container_name: db
     image: postgres:13.1
     restart: always
     env_file:
@@ -23,6 +25,7 @@ services:
       - postgres_data:/var/lib/postgresql/data/
 
   app:
+    container_name: app
     build: ./frontend
     restart: on-failure
     volumes:
