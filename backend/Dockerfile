@@ -1,0 +1,29 @@
+FROM python:3.9.1-alpine3.12
+
+ENV PATH="/scripts:${PATH}"
+ENV PYTHONUNBUFFERED 1
+
+RUN apk add gcc libc-dev postgresql-dev gcc python3-dev musl-dev linux-headers
+
+RUN mkdir /code
+WORKDIR /code
+COPY . /code/
+
+RUN pip install -U pip
+RUN pip install -r requirements.txt
+RUN pip install -e .
+
+COPY ./scripts /scripts
+RUN chmod +x /scripts/*
+
+RUN mkdir -p /vol/web/media
+RUN mkdir -p /vol/web/static
+
+RUN adduser -D user
+RUN chown -R user:user /vol
+
+RUN chmod -R 755 /vol/web
+
+USER user
+
+CMD ["entrypoint.sh"]
