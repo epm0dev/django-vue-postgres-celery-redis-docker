@@ -19,7 +19,7 @@ DB_NAME=
 DB_USER=
 POSTGRES_PASSWORD=
 ```
-4. Then, add the following environment variables and their values to the `dev.env` file you created in the last step:
+4. Then, add the following environment variables and their values to the `dev.env` file you created in the previous step:
 ```
 DEBUG=1
 ALLOWED_HOSTS=*
