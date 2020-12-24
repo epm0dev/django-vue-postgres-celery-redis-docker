@@ -6,3 +6,6 @@ sqlparse==0.4.1
 psycopg2>=2.8
 django-cors-headers
 djangorestframework-simplejwt
+gunicorn==20.0.4
+celery==5.0.5
+redis==3.5.3

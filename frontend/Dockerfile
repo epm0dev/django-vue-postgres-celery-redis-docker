@@ -13,7 +13,6 @@ COPY . /app/
 COPY ./scripts /scripts
 RUN chmod +x /scripts/*
 
-RUN adduser -D user
-USER user
+USER node
 
 CMD ["entrypoint.sh"]
