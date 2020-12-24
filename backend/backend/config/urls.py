@@ -8,6 +8,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='api/')),
     path('api/', include('api.urls')),
-    path('api-token/', TokenObtainPairView.as_view()),
-    path('api-token-refresh/', TokenRefreshView.as_view()),
+    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/token/refresh/', TokenRefreshView.as_view()),
 ]
