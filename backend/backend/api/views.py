@@ -1,32 +1,44 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
+from django.http import Http404
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer, CarSerializer
+from .serializers import CarSerializer
 from cars.models import Car
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class CarList(APIView):
     """
-    API endpoint that allows users to be viewed or edited.
+    Read-only API endpoint for a list of all Car objects.
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-class CarViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows cars to be viewed or edited.
-    """
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Car.objects.all()
-    serializer_class = CarSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.queryset.all()
+        serializer_context = {
+            'request': request,
+        }
+        serializer = CarSerializer(queryset, context=serializer_context, many=True)
+        return Response(serializer.data)
+
+
+class CarDetail(APIView):
+    """
+    Read-only API endpoint for a single Car object.
+    """
+    permission_classes = (permissions.IsAuthenticated,)
+
+    @staticmethod
+    def get_object(pk):
+        try:
+            return Car.objects.get(pk=pk)
+        except Car.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, *args, **kwargs):
+        car = self.get_object(pk)
+        serializer_context = {
+            'request': request,
+        }
+        serializer = CarSerializer(car, context=serializer_context)
+        return Response(serializer.data)
