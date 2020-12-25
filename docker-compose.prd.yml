@@ -5,7 +5,7 @@ services:
     container_name: production_api
     build:
       context: ./backend
-      dockerfile: ./docker/Dockerfile-prd
+      dockerfile: ./Dockerfile-prd
     expose:
       - 8000
     volumes:
@@ -41,7 +41,7 @@ services:
     container_name: production_app
     build:
       context: ./frontend
-      dockerfile: ./docker/Dockerfile-prd
+      dockerfile: ./Dockerfile-prd
     ports:
       - "80:80"
     env_file:

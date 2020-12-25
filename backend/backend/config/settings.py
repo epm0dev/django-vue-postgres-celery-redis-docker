@@ -124,3 +124,6 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'contenttype',
     'x-forwarded-for',
 ]
+
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"

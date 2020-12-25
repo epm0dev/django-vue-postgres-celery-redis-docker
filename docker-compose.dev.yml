@@ -5,7 +5,7 @@ services:
     container_name: api
     build:
       context: ./backend
-      dockerfile: ./docker/Dockerfile-dev
+      dockerfile: ./Dockerfile-dev
     volumes:
       - ./backend:/code
       - static_data:/vol/web
@@ -16,7 +16,8 @@ services:
       - .env.dev
     depends_on:
       - db
-    entrypoint: ["entrypoint-dev.sh"]
+      - redis
+    entrypoint: [ "entrypoint-dev.sh" ]
 
   db:
     container_name: db
@@ -26,11 +27,41 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
+  redis:
+    container_name: redis
+    image: redis:6.0.9-alpine3.12
+
+  celery:
+    container_name: celery
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile-dev
+    volumes:
+      - ./backend:/code
+    env_file:
+      - .env.dev
+    depends_on:
+      - redis
+    entrypoint: [ "entrypoint-celery.sh" ]
+
+  celery-beat:
+    container_name: celery-beat
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile-dev
+    volumes:
+      - ./backend:/code
+    env_file:
+      - .env.dev
+    depends_on:
+      - redis
+    entrypoint: [ "entrypoint-celery-beat.sh" ]
+
   app:
     container_name: app
     build:
       context: ./frontend
-      dockerfile: ./docker/Dockerfile-dev
+      dockerfile: ./Dockerfile-dev
     volumes:
       - ./frontend:/app
     ports:

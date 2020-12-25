@@ -9,7 +9,9 @@ A project template containing a Dockerized Vue.js application that consumes a Dj
 4. [Project Deployment](#project-deployment)
 
 ## Acknowledgements
-Special thanks to Very Academy. Their two Youtube videos ([here](https://www.youtube.com/watch?v=KFO8atMJ4Eg) and [here](https://www.youtube.com/watch?v=iuZViCeW0JM)) helped tremendously in getting the individual backend and frontend components of the project setup and working. Much of the project's boilerplate code is based on [this GitHub repository](https://github.com/veryacademy/YT-Vue-Django-Auth-JWT) of theirs.
+Special thanks to [Very Academy](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w). Their two Youtube videos ([here](https://www.youtube.com/watch?v=KFO8atMJ4Eg) and [here](https://www.youtube.com/watch?v=iuZViCeW0JM)) helped tremendously in getting the individual backend and frontend components of the project setup and working. Much of the project's boilerplate code is based on [this GitHub repository](https://github.com/veryacademy/YT-Vue-Django-Auth-JWT) of theirs.
+
+Special thanks to [testdriven.io](https://testdriven.io/). This [blog post](https://testdriven.io/blog/django-celery-periodic-tasks/) was very useful when setting up [Celery and Celery Beat](https://docs.celeryproject.org/en/stable/) as well as [redis](https://redis.io/). You can check out the example project referenced in the tutorial [here](https://github.com/testdrivenio/django-celery-beat).
 
 ## Template Structure
 TODO
@@ -31,7 +33,7 @@ TODO
 4. Build and run the development Docker containers from your command line:
    ```
    # Build and run the development containers
-   docker-compose -f docker-compose.dev.yml up --build
+   docker-compose -f docker-compose.dev.yml up -d --build
    ```
 5. Make and perform Django database migrations from your command line:
    ```
@@ -67,15 +69,15 @@ Note: Directions for creating a production environment file are incomplete and w
 3. Stop all running containers and remove their networks, volumes and images from your command line:
    ```
    # Stop any running development containers
-   docker-compose -f docker-compose.dev.yml down --volumes
+   docker-compose -f docker-compose.dev.yml down -v
    
    # Stop any running production containers
-   docker-compose -f docker-compose.prd.yml down --volumes
+   docker-compose -f docker-compose.prd.yml down -v
    ```
 4. Build and run the production Docker containers from your command line:
    ```
    # Build and run the production containers
-   docker-compose -f docker-compose.prd.yml up --build
+   docker-compose -f docker-compose.prd.yml up -d --build
    ```
 5. Make and perform Django database migrations from your command line:
    ```
