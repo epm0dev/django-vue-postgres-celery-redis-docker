@@ -48,6 +48,11 @@ TODO
    # Create new superuser
    docker exec -it api python backend/manage.py createsuperuser
    ```
+7. Once the containers are built, you can see what tasks have been run by the celery container from your command line as follows:
+   ```
+   # Check the celery container logs
+   docker-compose -f docker-compose.dev.yml logs celery
+   ```
 
 ## Project Deployment
 Note: These instructions assume that you have already completed the steps provided in the [Using This Template](#using-this-template) section of this README file.
