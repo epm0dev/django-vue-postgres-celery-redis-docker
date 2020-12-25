@@ -15,6 +15,7 @@ services:
       - .env.prd
     depends_on:
       - production_db
+      - production_redis
     entrypoint: ["entrypoint-prd.sh"]
 
   production_db:
@@ -24,6 +25,36 @@ services:
       - .env.prd
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+
+  production_redis:
+    container_name: production_redis
+    image: redis:6.0.9-alpine3.12
+
+  production_celery:
+    container_name: production_celery
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile-prd
+    volumes:
+      - ./backend:/code
+    env_file:
+      - .env.prd
+    depends_on:
+      - production_redis
+    entrypoint: [ "entrypoint-celery.sh" ]
+
+  production_celery-beat:
+    container_name: production_celery-beat
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile-prd
+    volumes:
+      - ./backend:/code
+    env_file:
+      - .env.prd
+    depends_on:
+      - production_redis
+    entrypoint: [ "entrypoint-celery-beat.sh" ]
 
   production_api_proxy:
     container_name: production_api_proxy

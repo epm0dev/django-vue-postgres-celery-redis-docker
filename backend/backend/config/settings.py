@@ -128,12 +128,12 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'x-forwarded-for',
 ]
 
-CELERY_BROKER_URL = "redis://redis:6379"
-CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_BROKER_URL = f'redis://{os.environ.get("REDIS_HOST")}:6379'
+CELERY_RESULT_BACKEND = f'redis://{os.environ.get("REDIS_HOST")}:6379'
 
 CELERY_BEAT_SCHEDULE = {
-    "sample_task": {
-        "task": "config.tasks.sample_task",
-        "schedule": crontab(minute="*/1"),
+    'sample_task': {
+        'task': 'config.tasks.sample_task',
+        'schedule': crontab(minute='*/1'),
     },
 }

@@ -14,6 +14,8 @@ RUN pip install -r requirements.txt
 RUN pip install -e .
 
 COPY ./scripts/entrypoint-prd.sh /scripts/
+COPY ./scripts/entrypoint-celery.sh /scripts/
+COPY ./scripts/entrypoint-celery-beat.sh /scripts/
 RUN chmod +x /scripts/*
 
 RUN mkdir -p /vol/web/media

@@ -64,12 +64,13 @@ Note: Directions for creating a production environment file are incomplete and w
    POSTGRES_DB=
    POSTGRES_USER=
    POSTGRES_PASSWORD=
-   CORS_ALLOWED_ORIGINS=
    ```
 2. Add the following environment variables and their values to the `.env.prd` file you created in the previous step:
    ```
    DEBUG=0
    DB_HOST=production_db
+   REDIS_HOST=production_redis
+   CORS_ALLOWED_ORIGINS=http://localhost:8000
    ```
 3. Stop all running containers and remove their networks, volumes and images from your command line:
    ```
