@@ -1,6 +1,6 @@
 django-vue-postgres-project-template
 ===========
-A project template containing a Dockerized Vue.js application that consumes a Django REST API which uses a PostgreSQL database. Much of the template is based on [this](https://github.com/veryacademy/YT-Vue-Django-Auth-JWT) repository, especially the Vue.js frontend.
+A project template containing a Dockerized Vue.js application that consumes a Django REST API which uses a PostgreSQL database.
 
 ## Table of Contents
 1. [Acknowledgements](#acknowledgements)
