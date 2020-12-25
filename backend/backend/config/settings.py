@@ -122,4 +122,5 @@ if CORS_ALLOWED_ORIGINS_ENV:
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'contenttype',
+    'x-forwarded-for',
 ]

@@ -13,10 +13,8 @@ RUN pip install -U pip
 RUN pip install -r requirements.txt
 RUN pip install -e .
 
-COPY ./docker/development/scripts /scripts
+COPY ./scripts/entrypoint-dev.sh /scripts/
 RUN chmod +x /scripts/*
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
-
-CMD ["entrypoint.sh"]

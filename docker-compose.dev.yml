@@ -5,16 +5,18 @@ services:
     container_name: api
     build:
       context: ./backend
-      dockerfile: ./docker/development/Dockerfile
+      dockerfile: ./docker/Dockerfile-dev
     volumes:
       - ./backend:/code
       - static_data:/vol/web
+      - media_data:/vol/web/media
     ports:
       - "8000:8000"
     env_file:
       - .env.dev
     depends_on:
       - db
+    entrypoint: ["entrypoint-dev.sh"]
 
   db:
     container_name: db
@@ -26,7 +28,9 @@ services:
 
   app:
     container_name: app
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile-dev
     volumes:
       - ./frontend:/app
     ports:
@@ -41,4 +45,5 @@ services:
 
 volumes:
   static_data:
+  media_data:
   postgres_data:

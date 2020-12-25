@@ -49,6 +49,7 @@ TODO
 
 ## Project Deployment
 Note: These instructions assume that you have already completed the steps provided in the [Using This Template](#using-this-template) section of this README file.
+Note: Directions for creating a production environment file are incomplete and will vary drastically depending on how the application is deployed.
 1. First, create a new file in the project's root directory called `.env.prd` and, in the newly created file, specify values for the following environment variables:
    ```
    SECRET_KEY=

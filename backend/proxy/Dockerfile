@@ -1,6 +1,7 @@
 FROM nginxinc/nginx-unprivileged:1.19.6-alpine
 
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/conf.d
 
 USER root
 

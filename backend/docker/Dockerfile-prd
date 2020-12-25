@@ -13,7 +13,7 @@ RUN pip install -U pip
 RUN pip install -r requirements.txt
 RUN pip install -e .
 
-COPY ./docker/production/scripts /scripts
+COPY ./scripts/entrypoint-prd.sh /scripts/
 RUN chmod +x /scripts/*
 
 RUN mkdir -p /vol/web/media

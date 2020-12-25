@@ -9,7 +9,7 @@ const eventsHub = new Vue()
 
 Vue.use(IdleVue, {
   eventEmitter: eventsHub,
-  idleTime: 5000
+  idleTime: 60000
 })
 
 Vue.config.productionTip = false

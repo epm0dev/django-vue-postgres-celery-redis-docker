@@ -5,7 +5,7 @@ services:
     container_name: production_api
     build:
       context: ./backend
-      dockerfile: ./docker/production/Dockerfile
+      dockerfile: ./docker/Dockerfile-prd
     expose:
       - 8000
     volumes:
@@ -15,7 +15,7 @@ services:
       - .env.prd
     depends_on:
       - production_db
-    entrypoint: ["entrypoint.sh"]
+    entrypoint: ["entrypoint-prd.sh"]
 
   production_db:
     container_name: production_db
@@ -27,21 +27,23 @@ services:
 
   production_api_proxy:
     container_name: production_api_proxy
-    build: ./proxy_backend
+    build: ./backend/proxy
     volumes:
       - static_data:/vol/web/static
       - media_data:/vol/web/media
     ports:
-      - "6969:80"
+      - "8000:8000"
     depends_on:
       - production_api
       - production_db
 
   production_app:
     container_name: production_app
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile-prd
     ports:
-      - "8080:8080"
+      - "80:80"
     env_file:
       - .env.prd
     depends_on:

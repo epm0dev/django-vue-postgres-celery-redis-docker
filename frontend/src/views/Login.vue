@@ -7,7 +7,7 @@
                 <label for="user">Username</label>
                 <input type="text" name="username" id="user" v-model="username">
             </div>
-            <div class="form-group">
+            <div>
                 <label for="pass">Password</label>
                 <input type="password" name="password" id="pass" v-model="password">
             </div>
