@@ -7,6 +7,7 @@ A project template containing a Dockerized Vue.js application that consumes a Dj
 2. [Template Structure](#template-structure)
 3. [Using This Template](#using-this-template)
 4. [Project Deployment](#project-deployment)
+5. [FAQ](#faq)
 
 ## Acknowledgements
 Special thanks to [Very Academy](https://www.youtube.com/channel/UC1mxuk7tuQT2D0qTMgKji3w). Their two Youtube videos ([here](https://www.youtube.com/watch?v=KFO8atMJ4Eg) and [here](https://www.youtube.com/watch?v=iuZViCeW0JM)) helped tremendously in getting the individual backend and frontend components of the project setup and working. Much of the project's boilerplate code is based on [this GitHub repository](https://github.com/veryacademy/YT-Vue-Django-Auth-JWT) of theirs.
