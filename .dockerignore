@@ -1,5 +1,0 @@
-.idea
-venv
-node_modules
-backend.egg-info
-*__pycache__*
