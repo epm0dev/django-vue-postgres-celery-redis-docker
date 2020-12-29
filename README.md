@@ -1,6 +1,6 @@
-django-vue-postgres-project-template
+django-vue-postgres-celery-redis-docker
 ===========
-A project template containing a Dockerized Vue.js application that consumes a Django REST API which uses a PostgreSQL database.
+TODO project description
 
 ## Table of Contents
 1. [Acknowledgements](#acknowledgements)
