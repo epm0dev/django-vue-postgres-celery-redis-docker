@@ -99,3 +99,5 @@ Note: Directions for creating a production environment file are incomplete and w
    # Create new superuser
    docker exec -it production_api python backend/manage.py createsuperuser
    ```
+## FAQ
+TODO
