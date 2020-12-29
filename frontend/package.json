@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "/scripts/start-server.sh && vue-cli-service serve",
+    "serve": "/scripts/start-server.sh",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -27,6 +27,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "nodemon": "^2.0.6",
     "npx": "^10.2.2",
+    "vue-cli-plugin-source-dir": "^0.1.0",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
