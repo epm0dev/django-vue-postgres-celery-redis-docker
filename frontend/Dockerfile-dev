@@ -1,13 +1,17 @@
 FROM node:15.4.0-alpine3.10
 
-RUN apk add --update nodejs npm
+RUN mkdir /node_env
+COPY package*.json /node_env/
+WORKDIR /node_env
+
+RUN npm install --verbose
+ENV PATH="/node_env/node_modules/.bin:${PATH}"
 
 RUN mkdir /app
 WORKDIR /app
-
-COPY package*.json /app/
-RUN npm install
-
 COPY . /app/
 
-CMD ["npm", "run", "serve"]
+COPY ./scripts/start-server.sh /scripts/
+RUN chmod +x /scripts/*
+
+CMD ["npx", "nodemon", "--exec", "npm run serve"]
