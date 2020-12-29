@@ -1,6 +1,6 @@
 FROM node:15.4.0-alpine3.10
 
-ENV PATH="./node_modules/.bin:${PATH}"
+RUN apk add --update nodejs npm
 
 RUN mkdir /app
 WORKDIR /app
@@ -9,7 +9,5 @@ COPY package*.json /app/
 RUN npm install
 
 COPY . /app/
-
-USER node
 
 CMD ["npm", "run", "serve"]
