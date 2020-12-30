@@ -1,6 +1,6 @@
-django-vue-postgres-project-template
+django-vue-postgres-celery-redis-docker
 ===========
-A project template containing a Dockerized Vue.js application that consumes a Django REST API which uses a PostgreSQL database.
+TODO project description
 
 ## Table of Contents
 1. [Acknowledgements](#acknowledgements)
@@ -99,6 +99,5 @@ Note: Directions for creating a production environment file are incomplete and w
    # Create new superuser
    docker exec -it production_api python backend/manage.py createsuperuser
    ```
-
 ## FAQ
-- If you encounter an error along the lines of `standard_init_linux.go:211: exec user process caused „no such file or directory`, make sure that the line endings in every shell script in the repository has LF line endings (Unix/macOS) rather than CRLF line endings (Windows).
+TODO
