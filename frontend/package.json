@@ -3,16 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "/scripts/start-server.sh",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "bootstrap": "^4.5.3",
     "core-js": "^3.6.5",
     "idle-vue": "^2.0.5",
-    "is-sorted": "^1.0.5",
     "vue": "^2.6.11",
     "vue-router": "^3.4.9",
     "vuex": "^3.6.0"
@@ -25,8 +23,6 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "nodemon": "^2.0.6",
-    "npx": "^10.2.2",
     "vue-cli-plugin-source-dir": "^0.1.0",
     "vue-template-compiler": "^2.6.11"
   },
@@ -48,9 +44,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "nodemonConfig": {
-    "watch": "package.json",
-    "delay": "5000"
-  }
+  ]
 }

@@ -1,13 +1,17 @@
-# build stage
-FROM node:15.4.0-alpine3.10 as build
+# install stage
+FROM node:15.4.0-alpine3.10 as install
 
-RUN mkdir /app
+ENV PATH="/app/node_modules/.bin/:${PATH}"
+
 WORKDIR /app
+COPY package*.json ./
 
-COPY package*.json /app/
-RUN npm install --silent
+RUN npm install
 
-COPY . /app
+COPY . /app/
+
+# build stage
+FROM install as build
 RUN npm run build
 
 # production stage
